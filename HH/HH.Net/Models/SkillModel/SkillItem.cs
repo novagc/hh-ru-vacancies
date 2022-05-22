@@ -9,6 +9,6 @@ namespace HH.Net.Models.SkillModel
     public class SkillItem
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
     }
 }

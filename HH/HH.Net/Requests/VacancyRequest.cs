@@ -69,10 +69,10 @@ namespace HH.Net.Requests
         private bool AddVacancies(VacancyResponse vr)
         {
             var toAdd = vr.Items
-                .Where(x => x.Salary.Currency == "RUR" && x.Salary.From.InRangeOrNull(MinSalary, MaxSalary));
+                .Where(x => x.Salary!.Currency == "RUR" && x.Salary.From.InRangeOrNull(MinSalary, MaxSalary));
             
             _vacancies.AddRange(toAdd);
 
-            return vr.Items.Any(x => x.Salary.From?.InRange(MinSalary, MaxSalary) ?? x.Salary.To.Value.InRange(MinSalary, MaxSalary));
+            return vr.Items.Any(x => x.Salary!.From?.InRange(MinSalary, MaxSalary) ?? x.Salary!.To!.Value.InRange(MinSalary, MaxSalary));
         } }
 }

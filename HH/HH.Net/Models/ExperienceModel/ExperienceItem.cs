@@ -25,9 +25,7 @@ namespace HH.Net.Models.ExperienceModel
 
     public class ExperienceItem
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        [JsonProperty("id")] public string Id { get; set; } = null!;
+        [JsonProperty("name")] public string Name { get; set; } = null!;
     }
 }
