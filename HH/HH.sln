@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HH.Net", "HH.Net\HH.Net.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HH.Tools", "HH.Tools\HH.Tools.csproj", "{7D0E4F2C-CDD9-4F2D-9619-28C75B8CE2EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HH.DB", "HH.DB\HH.DB.csproj", "{B3D6A0DA-E1AA-404C-8871-8FE9B8463EC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7D0E4F2C-CDD9-4F2D-9619-28C75B8CE2EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D0E4F2C-CDD9-4F2D-9619-28C75B8CE2EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D0E4F2C-CDD9-4F2D-9619-28C75B8CE2EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3D6A0DA-E1AA-404C-8871-8FE9B8463EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D6A0DA-E1AA-404C-8871-8FE9B8463EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D6A0DA-E1AA-404C-8871-8FE9B8463EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D6A0DA-E1AA-404C-8871-8FE9B8463EC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
