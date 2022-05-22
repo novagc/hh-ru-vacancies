@@ -37,7 +37,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -132,29 +131,18 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 211);
+            this.button1.Location = new System.Drawing.Point(8, 181);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(241, 38);
             this.button1.TabIndex = 5;
             this.button1.Text = "Загрузить данные";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(12, 181);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(177, 24);
-            this.checkBox2.TabIndex = 4;
-            this.checkBox2.Text = "Показать результаты";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 261);
-            this.Controls.Add(this.checkBox2);
+            this.ClientSize = new System.Drawing.Size(264, 228);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label4);
@@ -186,6 +174,5 @@
         private Label label4;
         private CheckBox checkBox1;
         private Button button1;
-        private CheckBox checkBox2;
     }
 }
