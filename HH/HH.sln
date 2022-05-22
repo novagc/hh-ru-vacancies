@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HH.Downloader", "HH.Downloader\HH.Downloader.csproj", "{E78DA905-622F-463D-971D-C207FDED2451}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HH.Tools", "HH.Tools\HH.Tools.csproj", "{7D0E4F2C-CDD9-4F2D-9619-28C75B8CE2EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E78DA905-622F-463D-971D-C207FDED2451}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E78DA905-622F-463D-971D-C207FDED2451}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E78DA905-622F-463D-971D-C207FDED2451}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D0E4F2C-CDD9-4F2D-9619-28C75B8CE2EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0E4F2C-CDD9-4F2D-9619-28C75B8CE2EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0E4F2C-CDD9-4F2D-9619-28C75B8CE2EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0E4F2C-CDD9-4F2D-9619-28C75B8CE2EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
