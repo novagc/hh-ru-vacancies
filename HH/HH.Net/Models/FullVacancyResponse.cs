@@ -6,7 +6,7 @@ namespace HH.Net.Models
     public class FullVacancyResponse
     {
         [JsonProperty("id")]
-        public string? Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("description")]
         public string? Description { get; set; }

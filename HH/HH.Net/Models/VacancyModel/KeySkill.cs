@@ -9,7 +9,6 @@ namespace HH.Net.Models.VacancyModel
 {
     public class KeySkill
     {
-        [JsonProperty("name")]
-        public string? Name { get; set; }
+        [JsonProperty("name")] public string Name { get; set; } = null!;
     }
 }
