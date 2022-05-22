@@ -40,7 +40,7 @@ CREATE TABLE "Experience"(
 ALTER TABLE
     "Experience" ADD PRIMARY KEY("IdExperience");
 CREATE TABLE "Skills"(
-    "IdSkill" INTEGER NOT NULL,
+    "IdSkill" SERIAL NOT NULL,
     "Name" TEXT NOT NULL
 );
 ALTER TABLE
