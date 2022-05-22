@@ -14,4 +14,8 @@
     <ProjectReference Include="..\HH.Tools\HH.Tools.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\FullVacancyModel\" />
+  </ItemGroup>
+
 </Project>
