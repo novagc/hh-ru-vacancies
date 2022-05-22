@@ -8,4 +8,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HH.DB\HH.DB.csproj" />
+    <ProjectReference Include="..\HH.Net\HH.Net.csproj" />
+    <ProjectReference Include="..\HH.Settings\HH.Settings.csproj" />
+  </ItemGroup>
+
 </Project>
