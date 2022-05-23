@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace HH.DB.Models
 {
@@ -63,10 +60,6 @@ namespace HH.DB.Models
             {
                 entity.HasKey(e => e.IdSkill)
                     .HasName("Skills_pkey");
-
-                entity.Property(e => e.IdSkill)
-                    .ValueGeneratedOnAdd()
-                    .HasDefaultValueSql("nextval('skill_id_seq'::regclass)");
             });
 
             modelBuilder.Entity<Specialization>(entity =>
@@ -77,7 +70,7 @@ namespace HH.DB.Models
 
             modelBuilder.Entity<VacanciesSkill>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(x => new {x.IdVacancy, x.IdSkill}).HasName("VacanciesSkills_pkey");
 
                 entity.HasIndex(e => e.IdSkill, "vacanciesskills_idskill_index");
 
@@ -98,7 +91,7 @@ namespace HH.DB.Models
 
             modelBuilder.Entity<VacanciesSpecialization>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(x => new {x.IdVacancy, x.IdSpecialization}).HasName("VacanciesSpecializations_pkey");
 
                 entity.HasIndex(e => e.IdSpecialization, "vacanciesspecializations_idspecialization_index");
 
