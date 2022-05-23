@@ -2,12 +2,12 @@ CREATE TABLE "Vacancies"(
     "IdVacancy" INTEGER NOT NULL,
     "Name" TEXT NOT NULL,
     "IdArea" INTEGER NOT NULL,
-    "SalaryFrom" DECIMAL(8, 2) NOT NULL,
-    "SalaryTo" DECIMAL(8, 2) NOT NULL,
-    "SalaryCurrency" INTEGER NOT NULL,
+    "SalaryFrom" DECIMAL(8, 2),
+    "SalaryTo" DECIMAL(8, 2),
+    "SalaryCurrency" TEXT,
     "PublishedAt" TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
-    "SnippetRequirement" TEXT NOT NULL,
-    "SnippetResponsibility" TEXT NOT NULL,
+    "SnippetRequirement" TEXT,
+    "SnippetResponsibility" TEXT,
     "Description" TEXT NOT NULL,
     "IdExperience" TEXT NOT NULL
 );
