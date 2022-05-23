@@ -10,11 +10,9 @@ namespace HH.Net.Models
     public class AreaResponse
     {
 
-        [JsonProperty("name")]
-        public string? Name { get; set; }
+        [JsonProperty("name")] public string Name { get; set; } = null!;
 
-        [JsonProperty("id")]
-        public string? Id { get; set; }
+        [JsonProperty("id")] public string Id { get; set; } = null!;
 
         [JsonProperty("parent_id")]
         public string? ParentId { get; set; }

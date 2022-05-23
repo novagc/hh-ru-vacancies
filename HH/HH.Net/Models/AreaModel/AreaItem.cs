@@ -9,11 +9,9 @@ namespace HH.Net.Models.AreaModel
 {
     public class AreaItem
     {
-        [JsonProperty("name")]
-        public string? Name { get; set; }
+        [JsonProperty("name")] public string Name { get; set; } = null!;
 
-        [JsonProperty("id")]
-        public string? Id { get; set; }
+        [JsonProperty("id")] public string Id { get; set; } = null!;
 
         public AreaItem()
         {

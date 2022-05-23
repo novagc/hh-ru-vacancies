@@ -15,10 +15,8 @@ namespace HH.Net.Models.VacancyModel
         [JsonProperty("profarea_name")]
         public string? ProfAreaName { get; set; }
 
-        [JsonProperty("id")]
-        public string? Id { get; set; }
+        [JsonProperty("id")] public string Id { get; set; } = null!;
 
-        [JsonProperty("name")]
-        public string? Name { get; set; }
+        [JsonProperty("name")] public string Name { get; set; } = null!;
     }
 }

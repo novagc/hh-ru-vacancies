@@ -8,14 +8,12 @@ namespace HH.Net.Models
         [JsonProperty("id")]
         public string Id { get; set; } = null!;
 
-        [JsonProperty("description")]
-        public string? Description { get; set; }
+        [JsonProperty("description")] public string Description { get; set; } = null!;
 
         [JsonProperty("branded_description")]
         public string? BrandedDescription { get; set; }
 
-        [JsonProperty("key_skills")]
-        public IList<KeySkill>? KeySkills { get; set; }
+        [JsonProperty("key_skills")] public IList<KeySkill> KeySkills { get; set; } = null!;
 
         [JsonProperty("schedule")]
         public Schedule? Schedule { get; set; }
@@ -26,8 +24,7 @@ namespace HH.Net.Models
         [JsonProperty("accept_kids")]
         public bool? AcceptKids { get; set; }
 
-        [JsonProperty("experience")]
-        public Experience? Experience { get; set; }
+        [JsonProperty("experience")] public Experience Experience { get; set; } = null!;
 
         [JsonProperty("address")]
         public Address? Address { get; set; }
@@ -53,20 +50,18 @@ namespace HH.Net.Models
         [JsonProperty("archived")]
         public bool? Archived { get; set; }
 
-        [JsonProperty("name")]
-        public string? Name { get; set; }
+        [JsonProperty("name")] public string Name { get; set; } = null!;
 
         [JsonProperty("insider_interview")]
         public InsiderInterview? InsiderInterview { get; set; }
 
         [JsonProperty("area")]
-        public Area? Area { get; set; }
+        public Area Area { get; set; } = null!;
 
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; set; }
 
-        [JsonProperty("published_at")]
-        public DateTime? PublishedAt { get; set; }
+        [JsonProperty("published_at")] public DateTime PublishedAt { get; set; }
 
         [JsonProperty("employer")]
         public Employer? Employer { get; set; }
@@ -86,8 +81,7 @@ namespace HH.Net.Models
         [JsonProperty("test")]
         public Test? Test { get; set; }
 
-        [JsonProperty("specializations")]
-        public IList<Specialization>? Specializations { get; set; }
+        [JsonProperty("specializations")] public IList<Specialization> Specializations { get; set; } = null!;
 
         [JsonProperty("contacts")]
         public Contacts? Contacts { get; set; }

@@ -62,8 +62,7 @@ namespace HH.Net.Models.VacancyModel
         [JsonProperty("response_url")]
         public object? ResponseUrl { get; set; }
 
-        [JsonProperty("snippet")]
-        public Snippet? Snippet { get; set; }
+        [JsonProperty("snippet")] public Snippet Snippet { get; set; } = null!;
 
         [JsonProperty("schedule")]
         public Schedule? Schedule { get; set; }

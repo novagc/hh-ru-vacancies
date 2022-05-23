@@ -8,10 +8,8 @@ namespace HH.Net.Models.VacancyModel
         [JsonProperty("url")]
         public string? Url { get; set; }
 
-        [JsonProperty("id")]
-        public string? Id { get; set; }
+        [JsonProperty("id")] public string Id { get; set; } = null!;
 
-        [JsonProperty("name")]
-        public string? Name { get; set; }
+        [JsonProperty("name")] public string Name { get; set; } = null!;
     }
 }
