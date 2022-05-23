@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace HH.DB.Models
+﻿namespace HH.DB.Models
 {
     public partial class VacanciesSpecialization
     {

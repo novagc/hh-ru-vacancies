@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace HH.DB.Models
+﻿namespace HH.DB.Models
 {
-    public partial class Experience
+    public partial class Experience : IEquatable<Experience>
     {
         public Experience()
         {
@@ -14,5 +11,25 @@ namespace HH.DB.Models
         public string Name { get; set; } = null!;
 
         public virtual ICollection<Vacancy> Vacancies { get; set; }
+
+        public bool Equals(Experience? other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return IdExperience == other.IdExperience;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Experience) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return IdExperience.GetHashCode();
+        }
     }
 }
