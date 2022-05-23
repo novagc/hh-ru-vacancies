@@ -29,7 +29,7 @@ namespace HH.Net.Requests
 
             if (name != null)
             {
-                temp.Append($"&text={Name}");
+                temp.Append($"&text={Name}&search_field=name");
             }
 
             if (minSalary != null)
