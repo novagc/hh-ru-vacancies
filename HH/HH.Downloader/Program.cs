@@ -13,7 +13,7 @@ namespace HH.Downloader
         [STAThread]
         static void Main()
         {
-            if (File.Exists(BasicSettings.DefaultFileName))
+            if (!File.Exists(BasicSettings.DefaultFileName))
             {
                 MessageBox.Show(
                     $"Файл {BasicSettings.DefaultFileName} не найден.{Environment.NewLine}Создайте его и запустите приложение заново!");
