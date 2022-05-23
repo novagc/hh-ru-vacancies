@@ -12,7 +12,7 @@ namespace HH.Net.Requests
     {
         public async Task<FullVacancyResponse> Send(int id)
         {
-            var response = await Requests.SendGet($"api.hh.ru/vacancies/{id}");
+            var response = await Requests.SendGet($"http://api.hh.ru/vacancies/{id}");
             return JsonConvert.DeserializeObject<FullVacancyResponse>(response) ?? new FullVacancyResponse();
         }
     }

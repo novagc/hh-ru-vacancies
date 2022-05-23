@@ -17,7 +17,7 @@ namespace HH.Net.Requests
         {
             _areas.Clear();
 
-            var response = await Requests.SendGet("");
+            var response = await Requests.SendGet("http://api.hh.ru/areas");
             var areas = JsonConvert.DeserializeObject<List<AreaResponse>>(response) ?? new List<AreaResponse>();
 
             foreach (var area in areas)

@@ -25,7 +25,7 @@ namespace HH.Net.Requests
             MaxSalary = maxSalary ?? Int32.MaxValue;
 
             var temp = new StringBuilder();
-            temp.Append("api.hh.ru/vacancies?order_by=salary_asc&only_with_salary=true&per_page=100");
+            temp.Append("http://api.hh.ru/vacancies?order_by=salary_asc&only_with_salary=true&per_page=100");
 
             if (name != null)
             {
