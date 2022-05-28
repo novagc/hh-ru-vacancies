@@ -104,5 +104,140 @@ namespace HH.DB
             await using var ctx = new HhContext();
             return await ctx.Specializations.ToListAsync();
         }
+        #region Delete
+
+        public static async Task<bool> DeleteVacancyAsync(int id)
+        {
+            await using var ctx = new HhContext();
+
+            var vacancy = await ctx.Vacancies.FindAsync(id);
+
+            if (vacancy == null)
+                return false;
+
+            var skills = await ctx.VacanciesSkills.AsNoTracking().Where(x => x.IdVacancy == id).ToListAsync();
+            var specials = await ctx.VacanciesSpecializations.AsNoTracking().Where(x => x.IdVacancy == id).ToListAsync();
+
+            if (skills.Any())
+            {
+                ctx.VacanciesSkills.RemoveRange(skills);
+                await ctx.SaveChangesAsync();
+            }
+
+            if (specials.Any())
+            {
+                ctx.VacanciesSpecializations.RemoveRange(specials);
+                await ctx.SaveChangesAsync();
+            }
+
+            ctx.Vacancies.Remove(vacancy);
+            await ctx.SaveChangesAsync();
+
+            return true;
+        }
+
+        public static async Task<bool> DeleteSkillAsync(int id)
+        {
+            await using var ctx = new HhContext();
+
+            var skill = await ctx.Skills.FindAsync(id);
+
+            if (skill == null)
+                return false;
+
+            var skills = await ctx.VacanciesSkills.AsNoTracking().Where(x => x.IdSkill == id).ToListAsync();
+
+            if (skills.Any())
+            {
+                ctx.VacanciesSkills.RemoveRange(skills);
+                await ctx.SaveChangesAsync();
+            }
+
+            ctx.Skills.Remove(skill);
+            await ctx.SaveChangesAsync();
+
+            return true;
+        }
+
+        public static async Task<bool> DeleteSpecializationAsync(string id)
+        {
+            await using var ctx = new HhContext();
+
+            var specialization = await ctx.Specializations.FindAsync(id);
+
+            if (specialization == null)
+                return false;
+
+            var skills = await ctx.VacanciesSpecializations.AsNoTracking().Where(x => x.IdSpecialization == id).ToListAsync();
+
+            if (skills.Any())
+            {
+                ctx.VacanciesSpecializations.RemoveRange(skills);
+                await ctx.SaveChangesAsync();
+            }
+
+            ctx.Specializations.Remove(specialization);
+            await ctx.SaveChangesAsync();
+
+            return true;
+        }
+
+        public static async Task<bool> DeleteVacancySpecializationAsync(int vacancyId, string specializationId)
+        {
+            await using var ctx = new HhContext();
+
+            var obj = await ctx.VacanciesSpecializations.FindAsync(vacancyId, specializationId);
+
+            if (obj == null)
+            {
+                return false;
+            }
+
+            ctx.VacanciesSpecializations.Remove(obj);
+            await ctx.SaveChangesAsync();
+
+            return true;
+        }
+
+        public static async Task<bool> DeleteVacancySkillsAsync(int vacancyId, int skillId)
+        {
+            await using var ctx = new HhContext();
+
+            var obj = await ctx.VacanciesSkills.FindAsync(vacancyId, skillId);
+
+            if (obj == null)
+            {
+                return false;
+            }
+
+            ctx.VacanciesSkills.Remove(obj);
+            await ctx.SaveChangesAsync();
+
+            return true;
+        }
+
+        public static async Task<bool> DeleteExperienceAsync(string id)
+        {
+            await using var ctx = new HhContext();
+            var obj = await ctx.Experiences.Include(x => x.Vacancies).FirstOrDefaultAsync(x => x.IdExperience == id);
+            if (obj == null || obj.Vacancies!.Any())
+                return false;
+            ctx.Experiences.Remove(obj);
+            await ctx.SaveChangesAsync();
+            return true;
+        }
+
+        public static async Task<bool> DeleteAreaAsync(int id)
+        {
+            await using var ctx = new HhContext();
+            var obj = await ctx.Areas.Include(x => x.Vacancies).FirstOrDefaultAsync(x => x.IdArea == id);
+            if (obj == null || obj.Vacancies!.Any())
+                return false;
+            ctx.Areas.Remove(obj);
+            await ctx.SaveChangesAsync();
+            return true;
+        }
+
+        #endregion
     }
 }
