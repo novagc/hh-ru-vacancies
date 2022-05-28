@@ -9,7 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HH.DB\HH.DB.csproj" />
+    <ProjectReference Include="..\HH.Net\HH.Net.csproj" />
   </ItemGroup>
 
 </Project>
