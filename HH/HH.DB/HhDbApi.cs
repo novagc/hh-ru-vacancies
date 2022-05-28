@@ -37,35 +37,35 @@ namespace HH.DB
             await ctx.SaveChangesAsync();
         }
 
-        public static async Task AddExperienceRange(List<Experience> experiences)
+        public static async Task AddExperienceRangeAsync(List<Experience> experiences)
         {
             await using var ctx = new HhContext();
             ctx.Experiences.AddOrSkip(experiences);
             await ctx.SaveChangesAsync();
         }
 
-        public static async Task AddSkillRange(List<Skill> skills)
+        public static async Task AddSkillRangeAsync(List<Skill> skills)
         {
             await using var ctx = new HhContext();
             ctx.Skills.AddOrSkip(skills);
             await ctx.SaveChangesAsync();
         }
 
-        public static async Task AddSpecializationsRange(List<Specialization> specializations)
+        public static async Task AddSpecializationsRangeAsync(List<Specialization> specializations)
         {
             await using var ctx = new HhContext();
             ctx.Specializations.AddOrSkip(specializations);
             await ctx.SaveChangesAsync();
         }
 
-        public static async Task AddVacanciesRange(List<Vacancy> vacancies)
+        public static async Task AddVacanciesRangeAsync(List<Vacancy> vacancies)
         {
             await using var ctx = new HhContext();
             ctx.Vacancies.AddOrUpdate(vacancies);
             await ctx.SaveChangesAsync();
         }
 
-        public static async Task AddVacanciesSkillsRange(List<VacanciesSkill> links)
+        public static async Task AddVacanciesSkillsRangeAsync(List<VacanciesSkill> links)
         {
             await using var ctx = new HhContext();
 
@@ -79,7 +79,7 @@ namespace HH.DB
             await ctx.SaveChangesAsync();
         }
 
-        public static async Task AddVacanciesSpecializationsRange(List<VacanciesSpecialization> links)
+        public static async Task AddVacanciesSpecializationsRangeAsync(List<VacanciesSpecialization> links)
         {
             await using var ctx = new HhContext();
 
@@ -99,7 +99,7 @@ namespace HH.DB
             return await ctx.Skills.ToListAsync();
         }
 
-        public static async Task<List<Specialization>> GetSpecializations()
+        public static async Task<List<Specialization>> GetSpecializationsAsync()
         {
             await using var ctx = new HhContext();
             return await ctx.Specializations.ToListAsync();
