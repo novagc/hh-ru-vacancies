@@ -212,6 +212,9 @@ namespace HH.DB
 
         #endregion
 
+        #region Get
+
+        public static async Task<List<Skill>> GetSkillsAsync()
         {
             await using var ctx = new HhContext();
             return await ctx.Skills.ToListAsync();
@@ -222,6 +225,38 @@ namespace HH.DB
             await using var ctx = new HhContext();
             return await ctx.Specializations.ToListAsync();
         }
+
+        public static async Task<List<Area>> GetAreasAsync()
+        {
+            await using var ctx = new HhContext();
+            return await ctx.Areas.ToListAsync();
+        }
+
+        public static async Task<List<Experience>> GetExperiencesAsync()
+        {
+            await using var ctx = new HhContext();
+            return await ctx.Experiences.ToListAsync();
+        }
+
+        public static async Task<List<Vacancy>> GetVacanciesAsync()
+        {
+            await using var ctx = new HhContext();
+            return await ctx.Vacancies.ToListAsync();
+        }
+
+        public static async Task<List<VacanciesSkill>> GetVacanciesSkillsAsync()
+        {
+            await using var ctx = new HhContext();
+            return await ctx.VacanciesSkills.ToListAsync();
+        }
+
+        public static async Task<List<VacanciesSpecialization>> GetVacanciesSpecializationsAsync()
+        {
+            await using var ctx = new HhContext();
+            return await ctx.VacanciesSpecializations.ToListAsync();
+        }
+
+        #endregion
 
         #region Get With Params
 
