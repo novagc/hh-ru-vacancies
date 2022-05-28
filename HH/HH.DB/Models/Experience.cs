@@ -1,4 +1,6 @@
-﻿namespace HH.DB.Models
+﻿using System.Text.Json.Serialization;
+
+namespace HH.DB.Models
 {
     public partial class Experience : IEquatable<Experience>
     {
@@ -10,7 +12,8 @@
         public string IdExperience { get; set; } = null!;
         public string Name { get; set; } = null!;
 
-        public virtual ICollection<Vacancy> Vacancies { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Vacancy>? Vacancies { get; set; }
 
         public bool Equals(Experience? other)
         {

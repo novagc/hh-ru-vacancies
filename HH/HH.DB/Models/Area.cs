@@ -1,4 +1,6 @@
-﻿namespace HH.DB.Models
+﻿using System.Text.Json.Serialization;
+
+namespace HH.DB.Models
 {
     public partial class Area : IEquatable<Area>
     {
@@ -10,7 +12,8 @@
         public int IdArea { get; set; }
         public string Name { get; set; } = null!;
 
-        public virtual ICollection<Vacancy> Vacancies { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Vacancy>? Vacancies { get; set; }
 
         public bool Equals(Area? other)
         {

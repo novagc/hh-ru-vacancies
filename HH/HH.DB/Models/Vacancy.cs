@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace HH.DB.Models
 {
@@ -16,8 +18,10 @@ namespace HH.DB.Models
         public string Description { get; set; } = null!;
         public string IdExperience { get; set; } = null!;
 
-        public virtual Area IdAreaNavigation { get; set; } = null!;
-        public virtual Experience IdExperienceNavigation { get; set; } = null!;
+        [JsonIgnore]
+        public virtual Area? IdAreaNavigation { get; set; } = null!;
+        [JsonIgnore]
+        public virtual Experience? IdExperienceNavigation { get; set; } = null!;
 
         public bool Equals(Vacancy? other)
         {
