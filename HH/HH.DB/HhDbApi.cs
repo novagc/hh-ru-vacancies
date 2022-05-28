@@ -104,6 +104,124 @@ namespace HH.DB
             await using var ctx = new HhContext();
             return await ctx.Specializations.ToListAsync();
         }
+        #region Get With Params
+
+        public static async Task<Vacancy?> GetVacancyAsync(int id)
+        {
+            await using var ctx = new HhContext();
+            return await ctx.Vacancies.FindAsync(id);
+        }
+
+        public static async Task<List<Vacancy>> GetVacanciesWithParamsAsync(DateTime? from, DateTime? to, string? sort, int? page, int? perPage)
+        {
+            from ??= DateTime.MinValue;
+            to ??= DateTime.MaxValue;
+            page ??= 0;
+            perPage ??= 50;
+
+            var reg = new Regex("([\\+-][\\w]+)");
+            var sortingParams = new List<Pair<string, bool>>();
+
+            if (sort != null)
+            {
+                var t = reg.Matches(sort).Select(x => x.Value);
+                sortingParams = t
+                    .Where(x => _goodParams.Contains(x.Substring(1)) )
+                    .Select(x => new Pair<string, bool>(x.Substring(1), x[0] == '+'))
+                    .ToList();
+            }
+
+            await using var ctx = new HhContext();
+            var temp = ctx.Vacancies.Where(x => x.PublishedAt >= from && x.PublishedAt <= to);
+            var sorted = false;
+
+            foreach (var pair in sortingParams)
+            {
+                if (!sorted)
+                {
+                    if (pair.First == _goodParams[0])
+                    {
+                        temp = pair.Second ? temp.OrderBy(x => x.PublishedAt) : temp.OrderByDescending(x => x.PublishedAt);
+                    }
+                    else if (pair.First == _goodParams[1])
+                    {
+                        temp = pair.Second ? temp.OrderBy(x => x.IdVacancy) : temp.OrderByDescending(x => x.IdVacancy);
+                    }
+                    else if (pair.First == _goodParams[2])
+                    {
+                        temp = pair.Second ? temp.OrderBy(x => x.Name) : temp.OrderByDescending(x => x.Name);
+                    }
+                    else
+                    {
+                        temp = pair.Second ? temp.OrderBy(x => x.IdArea) : temp.OrderByDescending(x => x.IdArea);
+                    }
+
+                    sorted = true;
+                }
+                else
+                {
+
+                    if (pair.First == _goodParams[0])
+                    {
+                        temp = pair.Second ? ((IOrderedQueryable<Vacancy>)temp).ThenBy(x => x.PublishedAt) : ((IOrderedQueryable<Vacancy>)temp).ThenByDescending(x => x.PublishedAt);
+                    }
+                    else if (pair.First == _goodParams[1])
+                    {
+                        temp = pair.Second ? ((IOrderedQueryable<Vacancy>)temp).ThenBy(x => x.IdVacancy) : ((IOrderedQueryable<Vacancy>)temp).ThenByDescending(x => x.IdVacancy);
+                    }
+                    else if (pair.First == _goodParams[2])
+                    {
+                        temp = pair.Second ? ((IOrderedQueryable<Vacancy>)temp).ThenBy(x => x.Name) : ((IOrderedQueryable<Vacancy>)temp).ThenByDescending(x => x.Name);
+                    }
+                    else
+                    {
+                        temp = pair.Second ? ((IOrderedQueryable<Vacancy>)temp).ThenBy(x => x.IdArea) : ((IOrderedQueryable<Vacancy>)temp).ThenByDescending(x => x.IdArea);
+                    }
+                }
+            }
+
+            temp = temp.Skip(page.Value * perPage.Value).Take(perPage.Value);
+            return await temp.ToListAsync();
+        }
+
+        public static async Task<Area?> GetAreaAsync(int id)
+        {
+            await using var ctx = new HhContext();
+            return await ctx.Areas.FindAsync(id);
+        }
+
+        public static async Task<Skill?> GetSkillAsync(int id)
+        {
+            await using var ctx = new HhContext();
+            return await ctx.Skills.FindAsync(id);
+        }
+
+        public static async Task<Specialization?> GetSpecializationAsync(string id)
+        {
+            await using var ctx = new HhContext();
+            return await ctx.Specializations.FindAsync(id);
+        }
+
+        public static async Task<Experience?> GetExperienceAsync(string id)
+        {
+            await using var ctx = new HhContext();
+            return await ctx.Experiences.FindAsync(id);
+        }
+
+        public static async Task<List<VacanciesSkill>> GetVacancySkillsAsync(int vacancyId)
+        {
+            await using var ctx = new HhContext();
+            return await ctx.VacanciesSkills.AsNoTracking().Where(x => x.IdVacancy == vacancyId).ToListAsync();
+        }
+
+        public static async Task<List<VacanciesSpecialization>> GetVacancySpecializationsAsync(int vacancyId)
+        {
+            await using var ctx = new HhContext();
+            return await ctx.VacanciesSpecializations.AsNoTracking().Where(x => x.IdVacancy == vacancyId).ToListAsync();
+        }
+
+        #endregion
+
         #region Update
 
         public static async Task<Vacancy> UpdateVacancyAsync(Vacancy obj)
