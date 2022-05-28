@@ -36,5 +36,49 @@ namespace HH.Net.Requests
                 return text;
             }
         }
+
+        public static async Task<string> SendPost(string url, string jsonBody)
+        {
+            using var client = new HttpClient();
+
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+            client.DefaultRequestHeaders.Add("User-agent", "PostmanRuntime/7.29.0");
+
+            var response = await client.PostAsync(url, new StringContent(jsonBody, Encoding.UTF8, "application/json"));
+            var text = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine(text);
+                throw new Exception("400");
+            }
+            else
+            {
+                return text;
+            }
+        }
+
+        public static async Task<string> SendDelete(string url)
+        {
+            using var client = new HttpClient();
+
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+            client.DefaultRequestHeaders.Add("User-agent", "PostmanRuntime/7.29.0");
+
+            var response = await client.DeleteAsync(url);
+            var text = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine(text);
+                throw new Exception("400");
+            }
+            else
+            {
+                return text;
+            }
+        }
     }
 }
