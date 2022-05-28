@@ -27,8 +27,8 @@ namespace HH.Downloader
 
             var fullVacancies = await SaveBasicInfo();
             
-            var skills = await HhDbApi.GetSkills();
-            var specializations = await HhDbApi.GetSpecializations();
+            var skills = await HhDbApi.GetSkillsAsync();
+            var specializations = await HhDbApi.GetSpecializationsAsync();
             
             await SaveVacanciesReferences(skills, specializations, fullVacancies);
 
@@ -64,11 +64,11 @@ namespace HH.Downloader
             var vacancies = vacanciesInfo.Select(Convert).ToList();
             var keySkills = GetKeySkills(vacanciesInfo).Select(Convert).ToList();
             
-            await HhDbApi.AddAreasRange(areas);
-            await HhDbApi.AddExperienceRange(experiences);
-            await HhDbApi.AddSpecializationsRange(specializations);
-            await HhDbApi.AddSkillRange(keySkills);
-            await HhDbApi.AddVacanciesRange(vacancies);
+            await HhDbApi.AddAreasRangeAsync(areas);
+            await HhDbApi.AddExperienceRangeAsync(experiences);
+            await HhDbApi.AddSpecializationsRangeAsync(specializations);
+            await HhDbApi.AddSkillRangeAsync(keySkills);
+            await HhDbApi.AddVacanciesRangeAsync(vacancies);
 
             return fullVacancies;
         }
@@ -100,8 +100,8 @@ namespace HH.Downloader
                 }
             }
 
-            await HhDbApi.AddVacanciesSpecializationsRange(tempSpec);
-            await HhDbApi.AddVacanciesSkillsRange(tempSkills);
+            await HhDbApi.AddVacanciesSpecializationsRangeAsync(tempSpec);
+            await HhDbApi.AddVacanciesSkillsRangeAsync(tempSkills);
         }
 
         private Area Convert(Net.Models.AreaModel.AreaItem area)
