@@ -44,8 +44,6 @@ namespace HH.DB.Models
                     .HasName("Area_pkey");
 
                 entity.ToTable("Area");
-
-                entity.Property(e => e.IdArea).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<Experience>(entity =>
@@ -114,8 +112,6 @@ namespace HH.DB.Models
             {
                 entity.HasKey(e => e.IdVacancy)
                     .HasName("Vacancies_pkey");
-
-                entity.Property(e => e.IdVacancy).ValueGeneratedNever();
 
                 entity.Property(e => e.PublishedAt).HasColumnType("timestamp(0) without time zone");
 
