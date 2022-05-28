@@ -116,6 +116,102 @@ namespace HH.DB
         }
 
         #endregion
+
+        #region Add
+
+        public static async Task<Area> AddAreaAsync(Area area)
+        {
+            await using var ctx = new HhContext();
+            var obj = await ctx.Areas.FindAsync(area.IdArea);
+
+            if (obj != null)
+            {
+                return obj;
+            }
+
+            ctx.Areas.Add(area);
+            await ctx.SaveChangesAsync();
+            return area;
+        }
+
+        public static async Task<Experience> AddExperienceAsync(Experience obj)
+        {
+            await using var ctx = new HhContext();
+            var temp = await ctx.Experiences.FindAsync(obj.IdExperience);
+
+            if (temp != null)
+            {
+                return temp;
+            }
+
+            ctx.Experiences.Add(obj);
+            await ctx.SaveChangesAsync();
+            return obj;
+        }
+
+        public static async Task<Skill> AddSkillAsync(Skill obj)
+        {
+            await using var ctx = new HhContext();
+            ctx.Skills.Add(obj);
+            await ctx.SaveChangesAsync();
+            return obj;
+        }
+
+        public static async Task<Specialization> AddSpecializationAsync(Specialization obj)
+        {
+            await using var ctx = new HhContext();
+            ctx.Specializations.Add(obj);
+            await ctx.SaveChangesAsync();
+            return obj;
+        }
+
+        public static async Task<Vacancy> AddVacancyAsync(Vacancy obj)
+        {
+            await using var ctx = new HhContext();
+            var temp = await ctx.Vacancies.FindAsync(obj.IdVacancy);
+
+            if (temp != null)
+            {
+                return temp;
+            }
+            
+            ctx.Vacancies.Add(obj);
+            await ctx.SaveChangesAsync();
+            return obj;
+        }
+
+        public static async Task<VacanciesSkill> AddVacancySkillAsync(VacanciesSkill obj)
+        {
+            await using var ctx = new HhContext();
+            var temp = await ctx.VacanciesSkills.FindAsync(obj.IdVacancy, obj.IdSkill);
+
+            if (temp != null)
+            {
+                return temp;
+            }
+
+            ctx.VacanciesSkills.Add(obj);
+            await ctx.SaveChangesAsync();
+            return obj;
+        }
+
+        public static async Task<VacanciesSpecialization> AddVacancySpecializationAsync(VacanciesSpecialization obj)
+        {
+            await using var ctx = new HhContext();
+            var temp = await ctx.VacanciesSpecializations.FindAsync(obj.IdVacancy, obj.IdSpecialization);
+
+            if (temp != null)
+            {
+                return temp;
+            }
+
+            ctx.VacanciesSpecializations.Add(obj);
+            await ctx.SaveChangesAsync();
+            return obj;
+        }
+
+        #endregion
+
         {
             await using var ctx = new HhContext();
             return await ctx.Skills.ToListAsync();
