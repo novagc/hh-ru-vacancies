@@ -1,10 +1,15 @@
-﻿using HH.DB.Models;
+﻿using System.Text.RegularExpressions;
+using HH.DB.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HH.DB
 {
     public static class HhDbApi
     {
+        #region Tools
+
+        private static string[] _goodParams = {"date", "id", "name", "area"};
+
         private static void AddOrUpdate<T>(this DbSet<T> set, List<T> items) where T : class, IEquatable<T>
         {
             var nonTrackingSet = set.AsNoTracking().ToList();
@@ -30,7 +35,24 @@ namespace HH.DB
             set.AddRange(temp);
         }
 
-        public static async Task AddAreasRange(List<Area> areas)
+        private static IQueryable<T> GetPage<T>(this IQueryable<T> set, int? perPage, int? page) where T : class
+        {
+            if (perPage == null)
+            {
+                return set;
+            }
+            else
+            {
+                page ??= 0;
+                return set.Skip(perPage.Value * page.Value).Take(perPage.Value);
+            }
+        }
+
+        #endregion
+
+        #region AddRange
+
+        public static async Task AddAreasRangeAsync(List<Area> areas)
         {
             await using var ctx = new HhContext();
             ctx.Areas.AddOrSkip(areas);
@@ -93,7 +115,7 @@ namespace HH.DB
             await ctx.SaveChangesAsync();
         }
 
-        public static async Task<List<Skill>> GetSkills()
+        #endregion
         {
             await using var ctx = new HhContext();
             return await ctx.Skills.ToListAsync();
@@ -104,6 +126,7 @@ namespace HH.DB
             await using var ctx = new HhContext();
             return await ctx.Specializations.ToListAsync();
         }
+
         #region Get With Params
 
         public static async Task<Vacancy?> GetVacancyAsync(int id)
