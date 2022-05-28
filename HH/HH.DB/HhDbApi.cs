@@ -104,6 +104,50 @@ namespace HH.DB
             await using var ctx = new HhContext();
             return await ctx.Specializations.ToListAsync();
         }
+        #region Update
+
+        public static async Task<Vacancy> UpdateVacancyAsync(Vacancy obj)
+        {
+            await using var ctx = new HhContext();
+            var res = ctx.Vacancies.Update(obj);
+            await ctx.SaveChangesAsync();
+            return res.Entity;
+        }
+
+        public static async Task<Area> UpdateAreaAsync(Area obj)
+        {
+            await using var ctx = new HhContext();
+            var res = ctx.Areas.Update(obj);
+            await ctx.SaveChangesAsync();
+            return res.Entity;
+        }
+
+        public static async Task<Experience> UpdateExperienceAsync(Experience obj)
+        {
+            await using var ctx = new HhContext();
+            var res = ctx.Experiences.Update(obj);
+            await ctx.SaveChangesAsync();
+            return res.Entity;
+        }
+
+        public static async Task<Skill> UpdateSkillAsync(Skill obj)
+        {
+            await using var ctx = new HhContext();
+            var res = ctx.Skills.Update(obj);
+            await ctx.SaveChangesAsync();
+            return res.Entity;
+        }
+
+        public static async Task<Specialization> UpdateSpecializationAsync(Specialization obj)
+        {
+            await using var ctx = new HhContext();
+            var res = ctx.Specializations.Update(obj);
+            await ctx.SaveChangesAsync();
+            return res.Entity;
+        }
+
+        #endregion
+
         #region Delete
 
         public static async Task<bool> DeleteVacancyAsync(int id)
